@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "084F232C-64D5-4FE3-B47D-1D5E7F239544",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "NetworkTests",
+        "name" : "NetworkTests"
+      }
+    }
+  ],
+  "version" : 1
+}
