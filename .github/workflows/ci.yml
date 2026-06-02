@@ -52,7 +52,7 @@ jobs:
 
       - name: Cache Swift Packages
         uses: actions/cache@v4
-          with:
-            path: |
-            ~/.swiftpm
-            key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        with:
+          path: |
+              ~/.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
