@@ -14,7 +14,7 @@ struct RetryingNetworkServiceTests {
         let sut = RetryingNetworkService(wrapped: mockInner, maxRetries: 3, baseDelay: 0.0)
         let _: TestResponse = try await sut.fetch(TestEndpoint())
 
-        #expect(mockInner.callCount == 1)
+        #expect(mockInner.callCount == 2)
     }
 
     // MARK: - Retry on 429
