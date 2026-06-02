@@ -5,9 +5,12 @@ name: iOS CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+
+    pull_request:
+      branches:
+      - main
 
 jobs:
   build-and-test:
@@ -15,11 +18,25 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: Checkout repository
-    - uses: actions/checkout@v4
-    
-    - name: Build
-      run: swift build -v
-      
-    - name: Run tests
-      run: swift test -v
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build app
+        run: |
+          xcodebuild \
+          -scheme Network \
+          -destination 'platform=iOS Simulator,name=iPhone 16' \
+          clean build
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+          -scheme Network \
+          -destination 'platform=iOS Simulator,name=iPhone 16'
